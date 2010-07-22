@@ -107,6 +107,14 @@ class PHP_CodeSniffer_SVN_Hook extends PHP_CodeSniffer_CLI
         // each line.
         $contents = preg_replace('/^.{4}/m', null, $contents);
 
+        if (empty($values['errorSeverity']) === false) {
+          $this->errorSeverity = $values['errorSeverity'];
+        }
+
+        if (empty($values['warningSeverity']) === false) {
+          $this->warningSeverity = $values['warningSeverity'];
+        }
+
         $values['standard'] = $this->validateStandard($values['standard']);
         if (PHP_CodeSniffer::isInstalledStandard($values['standard']) === false) {
             // They didn't select a valid coding standard, so help them
